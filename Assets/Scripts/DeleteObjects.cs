@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class KeepInFrame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public Canvas gameOver;
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<TakeDamage>().TakeDamageForPlayer(10);
+            gameOver.gameObject.SetActive(true);
+            gameOver.enabled = true;
+            Time.timeScale = 0f;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(collision.gameObject);
-    }
 
-    
 
-    
 
 }

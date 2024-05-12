@@ -8,6 +8,8 @@ public class MenuNavigation : MonoBehaviour
     public Transform mainMenu;
     public Transform controlMenu;
 
+    public Canvas gameOver;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class MenuNavigation : MonoBehaviour
             controlMenu.gameObject.SetActive(false);
         }
     }
+    
 
     public void OnPlayButton()
     {

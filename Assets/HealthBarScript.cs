@@ -25,7 +25,7 @@ public class HealthBarScript : MonoBehaviour
     void Update()
     {
 
-        if(slider.value >90)
+        if(slider.value >95)
             Time.timeScale = 1;
 
         if (slider.value <= 1)
