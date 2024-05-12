@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     private Collision coll;
     [HideInInspector]
     public Rigidbody2D rb;
-    private AnimationScript anim;
+    public AnimationScript anim;
 
     [Space]
     [Header("Stats")]
@@ -45,9 +45,7 @@ public class Movement : MonoBehaviour
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
 
-    //abdullah
     [Space]
-    [Header("Abdullah")]
     public Camera mainCamera;
     public LineRenderer _lineRenderer;
     public DistanceJoint2D _distanceJoint;
@@ -60,9 +58,7 @@ public class Movement : MonoBehaviour
     float tempspeed = 0;
     bool slung = false;
 
-    //huzaifa
     [Space]
-    [Header("Huzaifa")]
     public bool gravityOn = true;
     public float usage = 2;
     float cooldown = 2;
@@ -80,16 +76,16 @@ public class Movement : MonoBehaviour
     private float gravSign = 1f;
     Vector2 oldColl;
 
-    //rafay
     [Space]
-    [Header("Rafay")]
     public bool isAttacking = false;
     private float parryWindow = 0.5f;
-    private float m_timeSinceAttack = 0f;
+    public float m_timeSinceAttack = 0f;
+    public float attackRange = 2f;
+    public GameObject explosion;
 
-    //hassan
 
-    
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -222,6 +218,24 @@ public class Movement : MonoBehaviour
         }
 
 
+
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject enemy in enemies)
+            {
+                if (Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
+                {
+                    Debug.Log("Enemy in range");
+                    KillEnemy(enemy);
+                }
+
+
+            }
+        }
+
         Gravity();
 
         m_timeSinceAttack += Time.deltaTime;
@@ -229,6 +243,21 @@ public class Movement : MonoBehaviour
         
         Attack();
 
+    }
+
+
+    void KillEnemy(GameObject enemy)
+    {
+        Instantiate(explosion, enemy.transform.position, Quaternion.identity);
+
+        Destroy(explosion, 0.5f);
+        Destroy(enemy);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     void Grapple()
@@ -260,7 +289,7 @@ public class Movement : MonoBehaviour
 
         if (canSwing)
         {
-            if (Input.GetButtonDown("grapple"))
+            if (Input.GetKeyDown(KeyCode.O))
             {
                 Vector2 Pos = (Vector2)hookpos.position;
                 _lineRenderer.SetPosition(0, Pos);
@@ -272,7 +301,7 @@ public class Movement : MonoBehaviour
 
             }
 
-            else if (Input.GetButtonUp("grapple"))
+            else if (Input.GetKeyDown(KeyCode.O))
             {
                 _distanceJoint.enabled = false;
                 _lineRenderer.enabled = false;
@@ -377,7 +406,7 @@ public class Movement : MonoBehaviour
 
      void Attack()
     {
-        if (Input.GetButtonDown("Fire2") && m_timeSinceAttack > 1.5f /*&& !m_rolling*/) // CHANGED TIME SINCE ATTACK FOR PARRY COOLDOWN
+        if (Input.GetButtonDown("Fire2") && m_timeSinceAttack > 1f /*&& !m_rolling*/) // CHANGED TIME SINCE ATTACK FOR PARRY COOLDOWN
         {
             src.PlayOneShot(parrying);
             //m_currentAttack++;
@@ -395,6 +424,23 @@ public class Movement : MonoBehaviour
             m_timeSinceAttack = 0.0f;
         }
     }
+
+
+    IEnumerator ParryAttack()
+    {
+        isAttacking = true;
+
+        while (parryWindow > Mathf.Epsilon)
+        {
+            parryWindow -= Time.deltaTime;
+            yield return null;
+        }
+
+        parryWindow = 0.5f;
+        isAttacking = false;
+        yield break;
+    }
+
 
     IEnumerator flip(bool grav)
     {
@@ -420,20 +466,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    IEnumerator ParryAttack()
-    {
-        isAttacking = true;
-
-        while (parryWindow > Mathf.Epsilon)
-        {
-            parryWindow -= Time.deltaTime;
-            yield return null;
-        }
-
-        parryWindow = 0.5f;
-        isAttacking = false;
-        yield break;
-    }
+   
 
     void GroundTouch()
     {

@@ -2004,9 +2004,9 @@ DistanceJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: -0.00000007107519, y: -0.000000020097502}
-  m_ConnectedAnchor: {x: -0.45000792, y: -5.0500913}
+  m_ConnectedAnchor: {x: -0.47682285, y: -5.0232754}
   m_AutoConfigureDistance: 1
-  m_Distance: 7.8755846
+  m_Distance: 7.8431106
   m_MaxDistanceOnly: 0
 --- !u!120 &1642260243
 LineRenderer:
@@ -3337,6 +3337,10 @@ PrefabInstance:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2019554535288101757, guid: 182d9d03fb1a08249885991edf8924c3, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 6416419833205740478, guid: e48b5f231f1eac64199404091a7d249c, type: 3}
+    - target: {fileID: 2019554535288101757, guid: 182d9d03fb1a08249885991edf8924c3, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -3344,6 +3348,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2019554535288101757, guid: 182d9d03fb1a08249885991edf8924c3, type: 3}
+      propertyPath: attackRange
+      value: 4.66
+      objectReference: {fileID: 0}
     - target: {fileID: 2019554535288101757, guid: 182d9d03fb1a08249885991edf8924c3, type: 3}
       propertyPath: _lineRenderer
       value: 
