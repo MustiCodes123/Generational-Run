@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5226986701990405017}
   - component: {fileID: 2108466854435361129}
   - component: {fileID: 5775069901240472076}
+  - component: {fileID: 7009918698948944723}
   - component: {fileID: 2154426308886845269}
   m_Layer: 0
   m_Name: TurretGenerator
@@ -124,6 +125,18 @@ MonoBehaviour:
   minSpeed: 6
   maxSpeed: 5
   currSpeed: 0
+--- !u!114 &7009918698948944723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2376697823123116748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b190ddcfa33e334981abbf3a93c0385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &2154426308886845269
 BoxCollider2D:
   m_ObjectHideFlags: 0
