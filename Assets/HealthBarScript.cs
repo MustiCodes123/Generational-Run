@@ -28,6 +28,7 @@ public class HealthBarScript : MonoBehaviour
         {
             // game over canvas
             GameOver();
+            Time.timeScale = 0;
         }
 
 
