@@ -16,6 +16,14 @@ public class Score : MonoBehaviour
         InvokeRepeating(nameof(IncreaseScore), 1f, 1f);
     }
 
+
+    private void Update()
+    {
+        if (currentScore == 0) { 
+        
+            Time.timeScale = 1f;
+        }
+    }
     private void IncreaseScore()
     {
         currentScore += increaseRate;
