@@ -45,6 +45,11 @@ public class LaserMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        if (collision.CompareTag("Player")) {
+
+            collision.GetComponent<TakeDamage>().TakeDamageForPlayer(5);
+        }
+
         Debug.Log("coll");
         if (collision.gameObject.CompareTag("FinishLine"))
         {
