@@ -13,7 +13,7 @@ public class KeepInFrame : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<TakeDamage>().TakeDamageForPlayer(10);
+            collision.GetComponent<TakeDamage>().TakeDamageForPlayer(20);
             gameOver.gameObject.SetActive(true);
             gameOver.enabled = true;
             Time.timeScale = 0f;

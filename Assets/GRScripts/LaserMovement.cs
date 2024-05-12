@@ -45,10 +45,7 @@ public class LaserMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Player")) {
-
-            collision.GetComponent<TakeDamage>().TakeDamageForPlayer(5);
-        }
+        
 
         Debug.Log("coll");
         if (collision.gameObject.CompareTag("FinishLine"))
@@ -73,6 +70,11 @@ public class LaserMovement : MonoBehaviour
             }
             else 
             {
+
+                
+
+                collision.GetComponent<TakeDamage>().TakeDamageForPlayer(10);
+                
                 Debug.Log("dead");
                 exp = Instantiate(explosion, transform.position, transform.rotation);
                 turrGen.GenerateLaser();
