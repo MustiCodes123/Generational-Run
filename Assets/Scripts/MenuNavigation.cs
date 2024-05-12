@@ -45,12 +45,14 @@ public class MenuNavigation : MonoBehaviour
             Time.timeScale = 0f;
             Debug.Log("Game Paused");
             gamePauseCanvas.gameObject.SetActive(true); // Enable the canvas
+            gamePauseCanvas.enabled = true;
         }
         else
         {
             Time.timeScale = 1f; // Resume the game
             Debug.Log("Game Resumed");
             gamePauseCanvas.gameObject.SetActive(false); // Disable the canvas
+            gamePauseCanvas.enabled = true;
         }
     }
 

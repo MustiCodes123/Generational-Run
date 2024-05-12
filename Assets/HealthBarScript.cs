@@ -17,7 +17,7 @@ public class HealthBarScript : MonoBehaviour
     public Canvas GameOverCanvas;
     private void Start()
     {
-        GameOverCanvas.enabled = false;
+        GameOverCanvas.gameObject.SetActive(false);
         startHealth = 100;
         SetHealth(startHealth);
     }
