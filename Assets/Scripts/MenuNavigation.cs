@@ -11,17 +11,17 @@ public class MenuNavigation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainMenu.gameObject.SetActive(true);
-        controlMenu.gameObject.SetActive(false);
+        Scene CurrentScene = SceneManager.GetActiveScene();
+        if (CurrentScene.name == "MenuScene")
+        {
+            mainMenu.gameObject.SetActive(true);
+            controlMenu.gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnPlayButton()
     {
+        Time.timeScale = 1f;
         Debug.Log("BUTTON PRESSED");
         SceneManager.LoadScene("MainScene");
     }

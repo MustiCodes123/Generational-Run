@@ -24,6 +24,10 @@ public class HealthBarScript : MonoBehaviour
 
     void Update()
     {
+
+        if(slider.value >90)
+            Time.timeScale = 1;
+
         if (slider.value <= 1)
         {
             // game over canvas
