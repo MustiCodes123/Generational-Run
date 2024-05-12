@@ -346,7 +346,7 @@ Transform:
   m_GameObject: {fileID: 342867913}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 42, z: -3377.44}
+  m_LocalPosition: {x: 0, y: 42, z: -2495}
   m_LocalScale: {x: 62.955482, y: 62.955482, z: 62.955482}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -499,6 +499,10 @@ PrefabInstance:
     - target: {fileID: 2449792891369560236, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449792891369560236, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2495
       objectReference: {fileID: 0}
     - target: {fileID: 4621648422573214083, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
       propertyPath: m_Sprite
@@ -838,6 +842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControlsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1887965523286614022, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2499
+      objectReference: {fileID: 0}
     - target: {fileID: 1981032558690746633, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
       propertyPath: m_Name
       value: ExitButton
@@ -850,6 +858,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -169.83
       objectReference: {fileID: 0}
+    - target: {fileID: 2449792891369560236, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2499
+      objectReference: {fileID: 0}
     - target: {fileID: 2589911026109691987, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
       propertyPath: m_LocalScale.y
       value: 200.40366
@@ -861,6 +873,10 @@ PrefabInstance:
     - target: {fileID: 2589911026109691987, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
       propertyPath: m_LocalPosition.y
       value: -170.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589911026109691987, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2499
       objectReference: {fileID: 0}
     - target: {fileID: 4749835479211131573, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
       propertyPath: m_LocalScale.x
@@ -893,6 +909,10 @@ PrefabInstance:
     - target: {fileID: 5845491119658277775, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
       propertyPath: m_LocalPosition.y
       value: -145.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845491119658277775, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2499
       objectReference: {fileID: 0}
     - target: {fileID: 8423193562754501190, guid: da0038b9da859b5419ea5b5b2747103e, type: 3}
       propertyPath: m_Camera
