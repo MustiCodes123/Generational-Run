@@ -14,6 +14,9 @@ public class LaserMovement : MonoBehaviour
     public GameObject deflection;
     public Transform target;
     public float angleChangingSpeed;
+    bool dead = false;
+    GameObject exp;
+    public SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +29,12 @@ public class LaserMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 actualHitbox = new Vector2(target.transform.position.x, target.transform.position.y + 1f);
+        if(dead)
+        { 
+            sr.enabled = false;
+            return; 
+        }
+        Vector2 actualHitbox = new Vector2(target.transform.position.x, target.transform.position.y);
         Vector2 point2Target = (Vector2)transform.position - actualHitbox;
         point2Target.Normalize();
         float value = Vector3.Cross(point2Target, transform.right).z;
@@ -37,6 +45,7 @@ public class LaserMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        Debug.Log("coll");
         if (collision.gameObject.CompareTag("FinishLine"))
         {
             Instantiate(explosion, transform.position, transform.rotation);
@@ -47,7 +56,7 @@ public class LaserMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("HIT PLAYER");
-            if (collision.gameObject.GetComponent<HeroKnight>().isAttacking)
+            if (collision.gameObject.GetComponent<Movement>().isAttacking)
             {
                 Debug.Log("PARRYINGGG");
                 //GetComponent<SpriteRenderer>().flipX = false;
@@ -59,18 +68,41 @@ public class LaserMovement : MonoBehaviour
             }
             else 
             {
-                Instantiate(explosion, transform.position, transform.rotation);
+                Debug.Log("dead");
+                exp = Instantiate(explosion, transform.position, transform.rotation);
                 turrGen.GenerateLaser();
-                Destroy(this.gameObject);
+                dead = true;
+                StartCoroutine(DeleteExp(exp));
+                
             }
         }
         
         if (collision.gameObject.CompareTag("Enemy") && isDeflected)
         {
-            Instantiate(explosion, transform.position, transform.rotation);
-            turrGen.GenerateLaser();
-            Destroy(turrGen.gameObject);
-            Destroy(this.gameObject);
+            exp = Instantiate(explosion, transform.position, transform.rotation);
+            dead = true;
+            //turrGen.GenerateLaser();
+            StartCoroutine(DeleteExpNTurr(exp));
+            
+            
         }
     }
+
+    IEnumerator DeleteExpNTurr(GameObject exp)
+    {
+        Destroy(turrGen.gameObject);
+        yield return new WaitForSecondsRealtime(0.667f);
+        Destroy(exp);
+        
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator DeleteExp(GameObject exp)
+    {
+        yield return new WaitForSecondsRealtime(0.667f);
+        Destroy(exp);
+        Debug.Log("dead2");
+        Destroy(this.gameObject);
+    }
+
 }

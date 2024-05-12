@@ -279,7 +279,7 @@ public class HeroKnight : MonoBehaviour
             m_animator.SetTrigger("Hurt");
 
         //Attack
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 1.5f && !m_rolling) // CHANGED TIME SINCE ATTACK FOR PARRY COOLDOWN
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
         {
             m_currentAttack++;
 
@@ -287,7 +287,9 @@ public class HeroKnight : MonoBehaviour
             if (m_currentAttack > 3)
                 m_currentAttack = 1;
 
-            // REMOVED RESET COMBO
+            // Reset Attack combo if time since last attack is too large
+            if (m_timeSinceAttack > 1.0f)
+                m_currentAttack = 1;
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
@@ -339,11 +341,7 @@ public class HeroKnight : MonoBehaviour
             m_animator.SetTrigger("Jump");
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
-            if (gravityOn)
-            {
-                m_body2d.velocity = new Vector2(jumpx, jumpy);
-            }
-            else m_body2d.velocity = new Vector2(jumpx, -jumpy);
+            m_body2d.velocity = new Vector2(jumpx, jumpy);
             m_groundSensor.Disable(0.2f);
         }
 
@@ -386,7 +384,7 @@ public class HeroKnight : MonoBehaviour
                 usage = timeU;
                 gravityOn = true;
                 cooldownON = true;
-                m_body2d.gravityScale = 1;
+                m_body2d.gravityScale = 3;
                 src.PlayOneShot(clip2);
                 StartCoroutine(flip(gravityOn));
             }
@@ -408,16 +406,16 @@ public class HeroKnight : MonoBehaviour
         if (Input.GetKeyDown("1") && gravityOn == true && cooldownON == false && m_grounded == true)
         {
             gravityOn = false;
-            m_body2d.gravityScale = (float)-2;
+            m_body2d.gravityScale = (float)-4;
             src.PlayOneShot(clip1);
             StartCoroutine(flip(gravityOn));
         }
-        if (Input.GetKeyDown("2") && gravityOn == false)
+        if (Input.GetKeyDown("space") && gravityOn == false)
         {
             gravityOn = true;
             usage = timeU;
             cooldownON = true;
-            m_body2d.gravityScale = 1;
+            m_body2d.gravityScale = 3;
             src.PlayOneShot(clip2);
             StartCoroutine(flip(gravityOn));
         }
