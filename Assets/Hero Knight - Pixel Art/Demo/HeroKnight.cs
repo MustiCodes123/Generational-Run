@@ -3,7 +3,6 @@ using System.Collections;
 using System.Xml.Serialization;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
-using static UnityEditor.PlayerSettings;
 using Unity.VisualScripting;
 
 public class HeroKnight : MonoBehaviour

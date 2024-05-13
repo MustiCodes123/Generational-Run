@@ -75,8 +75,11 @@ public class MenuNavigation : MonoBehaviour
     }
     public void OnQuitButton()
     {
-        SceneManager.LoadScene("Menu");
-        //Application.Quit();
+        Scene CurrentScene = SceneManager.GetActiveScene();
+        if (CurrentScene.name != "Menu")
+            SceneManager.LoadScene("Menu");
+        else
+            Application.Quit();
     }
 
 
