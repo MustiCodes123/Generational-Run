@@ -8,6 +8,7 @@ public class PersistentParams : MonoBehaviour
     public static bool isLoading = false;
 
     public static string playerName;
+    public static int highScore = 0;
     public static string mins;
     public static string secs;
     private void Awake()

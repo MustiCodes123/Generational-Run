@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
+using System;
 
 // public interface savePersistence
 // {
@@ -11,7 +13,6 @@ using System.IO;
 public class saveFile : MonoBehaviour //, savePersistence
 {
     public Text scoreText;
-    public Text tTime;
     public Transform lastCoords;
     public Transform player;
     int playerNum = PersistentParams.fileParameter;
@@ -52,10 +53,13 @@ public class saveFile : MonoBehaviour //, savePersistence
 
             // Update the values
             lines[0] = PersistentParams.playerName;
-            lines[1] = scoreText.text;
-            lines[2] = tTime.text;
-            lines[3] = lastCoords.position.y.ToString();
-            lines[4] = lastCoords.position.x.ToString();
+            if (Int32.Parse(scoreText.text) > Int32.Parse(lines[1]))
+            {
+                Debug.Log("SCORE UPDATED");
+                lines[1] = scoreText.text;
+            }
+            lines[2] = lastCoords.position.y.ToString();
+            lines[3] = lastCoords.position.x.ToString();
 
             // Write the updated values back to the file
             File.WriteAllLines(filePath, lines);
@@ -66,7 +70,6 @@ public class saveFile : MonoBehaviour //, savePersistence
             string[] lines = {
                     PersistentParams.playerName,
                     scoreText.text,
-                    tTime.text,
                     lastCoords.position.y.ToString(),
                     lastCoords.position.x.ToString()
                 };
@@ -76,7 +79,6 @@ public class saveFile : MonoBehaviour //, savePersistence
         }
 
         Debug.Log("Player data saved to: " + filePath);
-
     }
 
     public void load()
@@ -86,15 +88,13 @@ public class saveFile : MonoBehaviour //, savePersistence
         filePath = Path.Combine(folderPath, fileName);
         string[] lines = File.ReadAllLines(filePath);
 
+        PersistentParams.playerName = lines[0];
         scoreText.text = lines[1];
-        //Debug.Log(scoreText.text);
-        tTime.text = lines[2];
-        string[] tokens = tTime.text.Split(" ");
-        string time = tokens[1];
-        PersistentParams.mins = time.Split(":")[0];
-        PersistentParams.secs = time.Split(":")[1];
+        PersistentParams.highScore = Int32.Parse(lines[1]);
+        Debug.Log(scoreText.text);
 
-        player.transform.position = new Vector3(float.Parse(lines[4]), float.Parse(lines[3]), 0);
+
+        //player.transform.position = new Vector3(float.Parse(lines[4]), float.Parse(lines[3]), 0);
 
     }
 

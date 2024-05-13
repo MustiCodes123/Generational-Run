@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(PersistentParams.highScore);
         currentScore = initialValue;
         UpdateScoreText();
         InvokeRepeating(nameof(IncreaseScore), 1f, 1f);

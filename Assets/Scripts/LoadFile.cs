@@ -19,6 +19,7 @@ public class loadFile : MonoBehaviour
     void Start()
     {
         UnityEngine.Debug.Log(Application.persistentDataPath);
+        PersistentParams.highScore = 0;
         string folderPath = Application.persistentDataPath;
         string fileName;
         string filePath;
@@ -35,7 +36,7 @@ public class loadFile : MonoBehaviour
                 string[] lines = File.ReadAllLines(filePath);
                 buttonsText[i * 3].text = lines[0];
                 buttonsText[i * 3 + 1].text = lines[1];
-                buttonsText[i * 3 + 2].text = lines[2];
+                //buttonsText[i * 3 + 2].text = lines[2];
 
             }
             else
@@ -43,7 +44,7 @@ public class loadFile : MonoBehaviour
                 //Debug.Log("No file available");
                 buttonsText[i * 3].text = "No File Available";
                 buttonsText[i * 3 + 1].text = "Score: <>";
-                buttonsText[i * 3 + 2].text = "Time: <>";
+                //buttonsText[i * 3 + 2].text = "Time: <>";
             }
 
 
@@ -67,19 +68,19 @@ public class loadFile : MonoBehaviour
 
 
 
-
+        Debug.Log(filePath);
         if (File.Exists(filePath) && fileNum > 10)
         {
             PersistentParams.fileParameter = fileNum;
             PersistentParams.isLoading = true;
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("MainScene");
         }
         else if (fileNum < 10)
         {
             PersistentParams.isLoading = false;
             PersistentParams.playerName = inputField.text;
             UnityEngine.Debug.Log(PersistentParams.playerName);
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("MainScene");
         }
     }
     // Update is called once per frame

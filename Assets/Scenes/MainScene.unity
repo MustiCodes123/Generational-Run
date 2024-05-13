@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 60684957}
   - component: {fileID: 60684958}
   - component: {fileID: 60684959}
+  - component: {fileID: 60684960}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -262,6 +263,21 @@ MonoBehaviour:
   controlMenu: {fileID: 0}
   gameOver: {fileID: 0}
   gamePauseCanvas: {fileID: 1394721054}
+--- !u!114 &60684960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60684956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98516d318c405f64a8102281da07d77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 80792007}
+  lastCoords: {fileID: 5778605554581106512}
+  player: {fileID: 5778605554581106512}
 --- !u!1 &80792005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1819,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 60684960}
+        m_TargetAssemblyTypeName: saveFile, Assembly-CSharp
+        m_MethodName: Save
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1435805039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,6 +2633,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 60684960}
+        m_TargetAssemblyTypeName: saveFile, Assembly-CSharp
+        m_MethodName: Save
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1976263009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3324,6 +3364,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1642260252}
   m_SourcePrefab: {fileID: 100100000, guid: 182d9d03fb1a08249885991edf8924c3, type: 3}
+--- !u!4 &5778605554581106512 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7316651493713581247, guid: 182d9d03fb1a08249885991edf8924c3, type: 3}
+  m_PrefabInstance: {fileID: 5778605554581106511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

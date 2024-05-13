@@ -75,7 +75,8 @@ public class MenuNavigation : MonoBehaviour
     }
     public void OnQuitButton()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Menu");
+        //Application.Quit();
     }
 
 
